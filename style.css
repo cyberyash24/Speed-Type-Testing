@@ -1,0 +1,41 @@
+  body{
+    background-color:grey;
+  }
+  
+  .container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    flex-direction:column;
+  }
+  #heading{
+    display:flex;
+    justify-content:center;
+  }
+  .ip{
+   width:100%;
+    height:120px;
+    resize:None;
+    font-size:16px;
+    
+    
+    color:black;
+    
+    
+    
+  }
+  .botton{
+    display:flex;
+    gap:10px;
+    
+  }
+  .btn{
+    padding:5px 8px 5px 8px;
+    font-weight:bold;
+   
+    
+  }
+  
+  
+

@@ -1,6 +1,23 @@
   body{
     background-color:grey;
+    
   }
+hr{
+  width:100%;
+  
+}
+
+.result{
+  display:None;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  
+}
+.result1{
+  flex-direction: column;
+  justify-content: center;
+}
   
   .container{
     display:flex;
@@ -39,3 +56,4 @@
   
   
 
+ 

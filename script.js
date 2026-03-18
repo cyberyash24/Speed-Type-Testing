@@ -6,20 +6,43 @@ let display2=document.querySelector(".sec");
   let timeLeft = 60;
   let id;
   let orignalText = "";
+let accuracy= 0;
+let highScore = 0;
+let highAcc = 0;
+let wpm;
   function time(){
-      
-    if(timeLeft===-1){
+     display2.innerText = ` Time : ${timeLeft}`
+    if(timeLeft===0){
       clearInterval(id);
       textarea.disabled = true;
       
+      document.querySelector(".container").style.display = "none";
+      document.querySelector(".score").style.display = "none";
+      document.querySelector(".result").style.display = "flex";
+      document.querySelector(".result1").innerHTML = `
+      <br>
+      
+      Highest Score: ${highScore} <br>
+      Highest Accuracy: ${highAcc} <br>
+      WPM : ${wpm || 0} <br>
+      Accuracy : ${accuracy || 0} <br>
+      
+      
+      `
+     
+      
       return;
     }
-    
-    display2.innerText=` Time : ${timeLeft} `;
+      
     timeLeft --;
+    
   }
   
   function startGame(){
+    document.querySelector(".container").style.display = "block";
+      document.querySelector(".score").style.display = "block";
+document.querySelector(".result").style.display = "none";
+    display2.innerText = `Time : 60`;
    textarea.value = "";
     textarea.disabled = false;
     textarea.focus();
@@ -59,7 +82,10 @@ let display2=document.querySelector(".sec");
     
     let timeWehave = 60 - timeLeft;
     if(timeWehave>0){
-    let wpm = Math.floor((words.length/timeWehave) * 60);
+    wpm = Math.floor((words.length/timeWehave) * 60);
+      if(wpm>highScore){
+        highScore = wpm;
+      }
     display3.innerText = ` WPM : ${wpm} `
     localStorage.setItem("key2",wpm);
     }
@@ -83,7 +109,10 @@ let display2=document.querySelector(".sec");
       }
         
     
-    let accuracy= (correct/orignalText.length)*100;
+     accuracy= (correct/orignalText.length)*100;
+    if(accuracy>highAcc){
+      highAcc = accuracy;
+    }
     let change = document.querySelector(".acc");
     change.innerText = ` Accuracy : ${accuracy.toFixed(2)}%`;
         localStorage.setItem("key",accuracy.toFixed(2));
